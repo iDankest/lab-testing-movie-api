@@ -16,7 +16,13 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testMatch": ["**/__tests__/**/*.test.js"]
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ],
+    "setupFilesAfterFramework": [
+      "./src/__tests__/setup.js"
+    ],
+    "globalSetup": "./src/__tests__/setup.js"
   },
   "devDependencies": {
     "jest": "^29.7.0",

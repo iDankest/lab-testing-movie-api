@@ -1,10 +1,15 @@
 // src/config/db.js
-const { Pool } = require("pg");
+const { Pool } = require('pg')
 
-// La forma correcta de usar el .env
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || 5432,
+  database: process.env.NODE_ENV === 'test'
+    ? process.env.DB_TEST_NAME
+    : process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD
+})
 
 pool.connect((err, client, release) => {
   if (err) {
