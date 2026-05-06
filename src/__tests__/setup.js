@@ -1,6 +1,12 @@
+// ⭐ IMPORTANTE: Cargar dotenv PRIMERO
+require('dotenv').config();
+
 const pool = require('../config/db')
 
 beforeAll(async () => {
+  console.log('🧪 NODE_ENV:', process.env.NODE_ENV)
+  console.log('🧪 DB_TEST_NAME:', process.env.DB_TEST_NAME)
+  
   // Crear tablas si no existen
   await pool.query(`
     CREATE TABLE IF NOT EXISTS usuarios (
